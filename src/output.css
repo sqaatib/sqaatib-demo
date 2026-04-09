@@ -181,6 +181,9 @@
       max-width: 96rem;
     }
   }
+  .flex {
+    display: flex;
+  }
   .table {
     display: table;
   }
@@ -201,6 +204,15 @@
   }
   .resize {
     resize: both;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
   }
   .rounded-xl {
     border-radius: var(--radius-xl);
