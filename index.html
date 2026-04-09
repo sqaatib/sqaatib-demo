@@ -11,7 +11,29 @@
     <div class="header">
         <div class="container">
             <h1>Hello</h1>
+            <button id="downloadBtn">Create and Download Project Folder</button>
         </div>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cloudflare.com"></script>
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', async function() {
+    const zip = new JSZip();
+
+    const projectFolder = zip.folder("MyProject");
+    projectFolder.file("index.html", "<html><body><h1>Hello World</h1></body></html>");
+
+    const cssFolder = projectFolder.folder("css");
+    cssFolder.file("style.css", "body { background-color: #f0f0f0; }");
+
+    const jsFolder = projectFolder.folder("js");
+    jsFolder.file("script.js", "console.log('Project Loaded');");
+
+    zip.generateAsync({ type: "blob" })
+    .then(function(content) {
+        saveAs(content, "Project_Archive.zip");
+    });
+});
+</script>
 </body>
 </html>
